@@ -1627,7 +1627,7 @@ GameObject:
   - component: {fileID: 95000010398391834}
   - component: {fileID: 7561769413041462927}
   - component: {fileID: 7112830529759300445}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rogue_05
   m_TagString: Enemy
   m_Icon: {fileID: 0}
