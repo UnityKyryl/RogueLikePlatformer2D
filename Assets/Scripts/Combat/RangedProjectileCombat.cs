@@ -13,6 +13,11 @@ namespace Combat
 
         private void Update()
         {
+            ProcessInput();
+        }
+
+        private void ProcessInput()
+        {
             if (Input.GetMouseButtonDown(1))
             {
                 Instantiate(projectile, projectilePosition.position, projectilePosition.rotation);

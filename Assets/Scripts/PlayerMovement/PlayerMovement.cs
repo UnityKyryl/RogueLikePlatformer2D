@@ -13,6 +13,7 @@ namespace PlayerMovement
         [SerializeField] private float checkRadius;
         [SerializeField] private int maxJumpCount;
     
+        //Dashing
         [SerializeField] private float dashDistance = 5f;
         [SerializeField] private float dashDelay = 1f;
 
@@ -25,10 +26,12 @@ namespace PlayerMovement
         private int jumpCount;
         private static readonly int RunAnimParam = Animator.StringToHash("RunParam");
     
+        //Dashing
         private bool isDashing;
         private float gravity;
         private bool canDash = true;
         private static readonly int DashActive = Animator.StringToHash("DashActive");
+        private static readonly int SlideActive = Animator.StringToHash("SlideActive");
 
         #endregion
 
@@ -80,7 +83,9 @@ namespace PlayerMovement
         private void Animate()
         {
             anim.SetInteger(RunAnimParam, moveDirection == 0 ? 0 : 1);
-            anim.SetBool(DashActive,isDashing);
+            //Dashing
+            anim.SetBool(DashActive, isDashing && !isGrounded);
+            anim.SetBool(SlideActive, isDashing && isGrounded);
             if (moveDirection > 0 && !facingRight && !isDashing)
                 FlipCharacter();
             else if (moveDirection < 0 && facingRight && !isDashing)

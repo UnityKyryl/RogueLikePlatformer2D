@@ -11,7 +11,7 @@ namespace Combat
         [SerializeField] private float attackRange = 0.5f;
         [SerializeField] private LayerMask enemyLayers;
         [SerializeField] private GameObject impactEffect;
-        [SerializeField] private float attackAimationDelay = 0.2f;
+        [SerializeField] private float attackAnimationDelay = 0.2f;
         
         private Animator anim;
     
@@ -26,6 +26,11 @@ namespace Combat
 
         private void Update()
         {
+            ProcessInput();
+        }
+
+        private void ProcessInput()
+        {
             if (Input.GetMouseButtonDown(0))
             {
                 StartCoroutine(Attack());
@@ -37,7 +42,7 @@ namespace Combat
             anim.SetTrigger(AttackTrigger);
             var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
-            yield return new WaitForSeconds(attackAimationDelay);
+            yield return new WaitForSeconds(attackAnimationDelay);
             foreach (var enemy in hitEnemies)
             {
                 Instantiate(impactEffect, enemy.transform.position, Quaternion.identity);
@@ -47,14 +52,12 @@ namespace Combat
 
         //Uncomment to check attack range
         
-        private void OnDrawGizmosSelected()
-        {
-            if(attackPoint==null)
-                return;
-            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        }
-        
-
+        // private void OnDrawGizmosSelected()
+        // {
+        //     if(attackPoint==null)
+        //         return;
+        //     Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        // }
         #endregion
        
     }
