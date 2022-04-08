@@ -4,12 +4,15 @@ namespace Combat
 {
     public class RangedProjectile : MonoBehaviour
     {
+        #region Fields
         [SerializeField] private float projectileSpeed;
         [SerializeField] private GameObject impactEffect;
 
         private Rigidbody2D rb;
+        #endregion
 
-        void Start()
+        #region Methods
+        private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             rb.velocity = transform.up * projectileSpeed;
@@ -24,5 +27,6 @@ namespace Combat
             }
             Destroy(gameObject);
         }
+        #endregion
     }
 }

@@ -4,23 +4,22 @@ namespace Combat
 {
     public class RangedProjectileCombat : MonoBehaviour
     {
+        #region Fields
         [SerializeField] private Transform projectilePosition;
         [SerializeField] private GameObject projectile;
+        #endregion
 
-        private Animator anim;
+        #region Methods
 
-        private void Awake()
-        {
-            anim = GetComponent<Animator>();
-        }
-
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (Input.GetMouseButtonDown(1))
             {
                 Instantiate(projectile, projectilePosition.position, projectilePosition.rotation);
             }
         }
+
+        #endregion
+
     }
 }

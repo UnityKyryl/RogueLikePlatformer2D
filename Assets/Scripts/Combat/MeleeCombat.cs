@@ -5,6 +5,7 @@ namespace Combat
 {
     public class MeleeCombat : MonoBehaviour
     {
+        #region Fields
         [SerializeField] private Transform attackPoint;
         [SerializeField] private float attackRange = 0.5f;
         [SerializeField] private LayerMask enemyLayers;
@@ -13,13 +14,15 @@ namespace Combat
         private Animator anim;
     
         private static readonly int AttackTrigger = Animator.StringToHash("Attack");
+        #endregion
 
-        private void Start()
+        #region Methods
+        private void Awake()
         {
             anim = GetComponent<Animator>();
         }
 
-        void Update()
+        private void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -27,7 +30,7 @@ namespace Combat
             }
         }
 
-        void Attack()
+        private void Attack()
         {
             anim.SetTrigger(AttackTrigger);
             var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -47,5 +50,9 @@ namespace Combat
         //         return;
         //     Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         // }
+        
+
+        #endregion
+       
     }
 }

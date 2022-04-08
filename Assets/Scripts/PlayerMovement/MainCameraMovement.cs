@@ -1,29 +1,31 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MainCameraMovement : MonoBehaviour
+namespace PlayerMovement
 {
-    #region Fields
-
-    [SerializeField] private Transform playerTransform;
-    
-    private Camera mainCamera;
-    #endregion
-
-    private void Awake()
+    public class MainCameraMovement : MonoBehaviour
     {
-        mainCamera = Camera.main;
-    }
+        #region Fields
+
+        [SerializeField] private Transform playerTransform;
     
-    void Update()
-    {
-        var transform1 = mainCamera.transform;
-        var position = transform1.position;
-        position =
-            new Vector3(playerTransform.position.x, position.y,
-                position.z);
-        transform1.position = position;
+        private Camera mainCamera;
+        #endregion
+
+        #region Methods
+        private void Awake()
+        {
+            mainCamera = Camera.main;
+        }
+    
+        void Update()
+        {
+            var transform1 = mainCamera.transform;
+            var position = transform1.position;
+            position =
+                new Vector3(playerTransform.position.x, position.y,
+                    position.z);
+            transform1.position = position;
+        }
+        #endregion
     }
 }

@@ -1659,6 +1659,7 @@ GameObject:
   - component: {fileID: 3136215048533170764}
   - component: {fileID: 6479912107814252806}
   - component: {fileID: 2454060287588956522}
+  - component: {fileID: 3100050323480197246}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1722,7 +1723,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: a239e2aad456e1a48a218550c9f10277, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &3136215048533170764
 BoxCollider2D:
@@ -1770,6 +1771,8 @@ MonoBehaviour:
     m_Bits: 8
   checkRadius: 0
   maxJumpCount: 2
+  dashDistance: 7
+  dashDelay: 1
 --- !u!114 &2454060287588956522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1784,6 +1787,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePosition: {fileID: 2951217057524787799}
   projectile: {fileID: 7376226913105288407, guid: d2eb2593831681142acb855300f26220, type: 3}
+--- !u!114 &3100050323480197246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5273793055819860209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c3613d5cb36664ea631a156d169947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 7996605915738142758}
+  attackRange: 1
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  impactEffect: {fileID: 194062, guid: 8c27aeead6d968e4ba986702d6b84335, type: 3}
 --- !u!1 &5273793056164678573
 GameObject:
   m_ObjectHideFlags: 0
