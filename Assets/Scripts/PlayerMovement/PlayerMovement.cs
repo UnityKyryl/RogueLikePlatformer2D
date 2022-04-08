@@ -23,11 +23,13 @@ namespace PlayerMovement
         private float moveDirection;
         private bool isGrounded;
         private int jumpCount;
-        private static readonly int AnimParam = Animator.StringToHash("AnimParam");
+        private static readonly int RunAnimParam = Animator.StringToHash("RunParam");
     
         private bool isDashing;
         private float gravity;
         private bool canDash = true;
+        private static readonly int DashActive = Animator.StringToHash("DashActive");
+
         #endregion
 
         #region Methods
@@ -48,7 +50,6 @@ namespace PlayerMovement
         {
             ProcessInput();
             Animate();
-        
         }
 
         private void FixedUpdate()
@@ -78,10 +79,11 @@ namespace PlayerMovement
 
         private void Animate()
         {
-            anim.SetInteger(AnimParam, moveDirection == 0 ? 0 : 1);
-            if (moveDirection > 0 && !facingRight)
+            anim.SetInteger(RunAnimParam, moveDirection == 0 ? 0 : 1);
+            anim.SetBool(DashActive,isDashing);
+            if (moveDirection > 0 && !facingRight && !isDashing)
                 FlipCharacter();
-            else if (moveDirection < 0 && facingRight)
+            else if (moveDirection < 0 && facingRight && !isDashing)
                 FlipCharacter();
         }
 
