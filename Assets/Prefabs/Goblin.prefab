@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 1425658075185695959}
   - component: {fileID: 1425658075185695978}
   - component: {fileID: 1425658075185695979}
+  - component: {fileID: 6562376093170251688}
+  - component: {fileID: 4668162714851324854}
+  - component: {fileID: 6257901281659817138}
   m_Layer: 6
   m_Name: Goblin
   m_TagString: Enemy
@@ -151,3 +154,56 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.35}
   m_EdgeRadius: 0
+--- !u!61 &6562376093170251688
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425658075185695958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.002611056, y: -0.08}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5, y: 1.5}
+    newSize: {x: 1.5, y: 1.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.2947779, y: 0.35}
+  m_EdgeRadius: 0
+--- !u!114 &4668162714851324854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425658075185695958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51bda98c452d47445b08f782fb3a6948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthReductionAmount: 35
+--- !u!114 &6257901281659817138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425658075185695958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a62a82324531e42b44eb0ee7774580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 70
+  currentHealth: 0

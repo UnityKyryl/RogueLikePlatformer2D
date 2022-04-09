@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using HealthSystem;
 using UnityEngine;
 
 namespace PlayerMovement
@@ -12,7 +14,7 @@ namespace PlayerMovement
         [SerializeField] private LayerMask groundObject;
         [SerializeField] private float checkRadius;
         [SerializeField] private int maxJumpCount;
-    
+
         //Dashing
         [SerializeField] private float dashDistance = 5f;
         [SerializeField] private float dashDelay = 1f;
@@ -110,7 +112,7 @@ namespace PlayerMovement
             facingRight = !facingRight;
             transform.Rotate(0f,180f,0f);
         }
-
+        
         private IEnumerator Dash()
         {
             isDashing = true;
@@ -129,6 +131,8 @@ namespace PlayerMovement
             yield return new WaitForSeconds(dashDelay);
             canDash = true;
         }
+        
+        
 
         #endregion
     }

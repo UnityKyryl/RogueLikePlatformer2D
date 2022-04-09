@@ -16,8 +16,8 @@ namespace PlayerMovement
         {
             mainCamera = Camera.main;
         }
-    
-        void Update()
+
+        private void Update()
         {
             var transform1 = mainCamera.transform;
             var position = transform1.position;

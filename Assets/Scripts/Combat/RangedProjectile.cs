@@ -1,3 +1,4 @@
+using HealthSystem;
 using UnityEngine;
 
 namespace Combat
@@ -7,6 +8,7 @@ namespace Combat
         #region Fields
         [SerializeField] private float projectileSpeed;
         [SerializeField] private GameObject impactEffect;
+        [SerializeField] private int projectileDamage=20;
 
         private Rigidbody2D rb;
         #endregion
@@ -22,7 +24,12 @@ namespace Combat
         {
             if (other.CompareTag("Enemy"))
             {
-                Destroy(other.gameObject);
+                var healthComponent = other.gameObject.GetComponent<Health>();
+                
+                if (healthComponent != null)
+                {
+                    healthComponent.TakeDamage(projectileDamage/2);
+                }
                 Instantiate(impactEffect, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using HealthSystem;
 using UnityEngine;
 
 namespace Combat
@@ -12,6 +13,7 @@ namespace Combat
         [SerializeField] private LayerMask enemyLayers;
         [SerializeField] private GameObject impactEffect;
         [SerializeField] private float attackAnimationDelay = 0.2f;
+        [SerializeField] private int meleeDamage = 5;
         
         private Animator anim;
     
@@ -41,23 +43,27 @@ namespace Combat
         {
             anim.SetTrigger(AttackTrigger);
             var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
             yield return new WaitForSeconds(attackAnimationDelay);
             foreach (var enemy in hitEnemies)
             {
                 Instantiate(impactEffect, enemy.transform.position, Quaternion.identity);
-                Destroy(enemy.gameObject);
+                var healthComponent = enemy.gameObject.GetComponent<Health>();
+                
+                if (healthComponent != null)
+                {
+                    healthComponent.TakeDamage(meleeDamage/2);
+                }
             }
         }
 
         //Uncomment to check attack range
         
-        // private void OnDrawGizmosSelected()
-        // {
-        //     if(attackPoint==null)
-        //         return;
-        //     Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        // }
+        private void OnDrawGizmosSelected()
+        {
+            if(attackPoint==null)
+                return;
+            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        }
         #endregion
        
     }
